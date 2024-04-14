@@ -1,0 +1,101 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(./fonts/Montserrat-Black.ttf) format(truetype);
+}
+h1{
+font-size: 24px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+line-height: 29px;
+}
+.header-link{
+    font-weight: bold;
+    color: #5C6A79;
+    font-family: 'Montserrat';
+font-style: normal;
+font-size: 10px;
+line-height: 12px;
+text-transform: uppercase;
+}
+.link-sticker{
+    font-size: 18px;
+    font-weight: bold;
+    color: #1C2A39;
+font-family: 'Montserrat';
+font-style: normal;
+
+line-height: 22px;
+text-transform: uppercase;
+}
+
+.link.active{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+text-transform: capitalize;
+}
+.link{
+font-family: 'Montserrat';
+font-style: normal;
+font-size: 12px;
+line-height: 15px;
+text-transform: capitalize;
+}
+.card_item__author{
+font-family: 'Open Sans';
+font-style: normal;
+font-size: 10px;
+line-height: 14px;
+text-transform: capitalize;
+color: #5C6A79;
+}
+.card_item__title{
+font-family: 'Montserrat';
+font-style: normal;
+font-size: 16px;
+line-height: 20px;
+color: #1C2A39;
+}
+.card_item__desribtion{
+font-family: 'Open Sans';
+font-style: normal;
+font-size: 10px;
+line-height: 14px;
+text-transform: capitalize;
+}
+.price{
+font-family: 'Montserrat';
+font-style: normal;
+font-size: 13px;
+line-height: 16px;
+text-transform: uppercase;
+color: #1C2A39;
+}
+.card_item-count{
+font-family: 'Open Sans';
+font-style: normal;
+font-size: 10px;
+line-height: 14px;
+
+color: #5C6A79;
+}
+
+.buy-btn{
+font-family: 'Montserrat';
+font-style: normal;
+font-size: 8px;
+line-height: 10px;
+text-transform: uppercase;
+}
+.btn{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 8px;
+line-height: 10px;
+text-transform: uppercase;
+color: #4C3DB2;
+}
