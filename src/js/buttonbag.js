@@ -1,7 +1,8 @@
+let buttonbag = () => {
 let cartCounter = 0;
 
 
-function toggleCart(button) {
+function cartCounter(button) {
     if (button.classList.contains('added')) {
         button.classList.remove('added');
         button.textContent = 'Buy now';
@@ -17,5 +18,6 @@ function toggleCart(button) {
     }
     document.getElementById('cart-counter').textContent = cartCounter;   
 }
-
+};
+export {buttonbag};
 
