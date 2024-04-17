@@ -1,3 +1,4 @@
+let loader = () => {
 const API_Key='AIzaSyDszvaaBOPGUYhjJ5L2m_OvNUPs6U6CH78';
 const GET_COUNT_BOOKS= 6;
 let currentStep = 0;
@@ -90,5 +91,6 @@ document.addEventListener('click', (event) => {
     getAndShowBooks()
   }
 })
-
+};
+export { loader };
 

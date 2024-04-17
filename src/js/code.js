@@ -1,3 +1,4 @@
+let code = () => {
 let images = [{
     url:"./imgslider./banner1.png",
    }, {
@@ -109,3 +110,5 @@ let images = [{
     }
     initSlider(images, sliderOptions);
   });
+};
+export {code};
