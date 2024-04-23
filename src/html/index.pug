@@ -1,0 +1,80 @@
+doctype html
+| PASTE YOUR HTML CODE HERE
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width,initial-scale=1')
+  link(rel='stylesheet' href='./style.css')
+  link(rel='stylesheet' href='./font.css')
+header
+  .hed
+    h1  Bookshop
+    .navigation
+      a.header-link books
+      a.header-link audiobooks
+      a.header-link stationery &amp; gifts
+      a.header-link blog
+    .buttons
+      button.butn
+        img(src='./src/images/nav/user.svg' alt='user')
+      button.butn
+        img(src='./src/images/nav/search.svg' alt='search')
+      button.butn
+        img(src='./src/images/nav/shopbag.svg' alt='shop bag')
+        span.cartCounter
+    .hamb
+      #hamb.hamb__field
+        span.bar
+        span.bar
+        span.bar
+      #popup.popup
+main
+  section.slider
+    .slider__images
+  a.link-sticker(href='')
+    span.sticker-one
+      .sticker-one-text
+        | Change old book on new 
+        img(src='./src/images/sticker/arrow.svg' alt='arrow')
+  a.link-sticker(href='')
+    span.sticker-two
+      span.sticker-two-text
+        | Top 100 Books 2022 
+        img(src='./src/images/sticker/arrow.svg' alt='arrow')
+  .books
+    ul.nav-category-list
+      li.nav-category-list__item
+        a.link.active(data-category='subject:Architecture') Architecture
+      li.nav-category-list__item
+        a.link(data-category='subject:Art') Art &amp; Fashion
+      li.nav-category-list__item
+        a.link(data-category='subject:Biography & Autobiography') Biography
+      li.nav-category-list__item
+        a.link(data-category='subject:Business') Business
+      li.nav-category-list__item
+        a.link(data-category='subject:Crafts & Hobbies') Crafts &amp; Hobbies
+      li.nav-category-list__item
+        a.link(data-category='subject:Drama') Drama
+      li.nav-category-list__item
+        a.link(data-category='subject:Fiction') Fiction
+      li.nav-category-list__item
+        a.link(data-category='subject:Cooking') Food &amp; Drink
+      li.nav-category-list__item
+        a.link(data-category='subject:Health & Fitness') Health &amp; Wellbeing
+      li.nav-category-list__item
+        a.link(data-category='subject:History') History &amp; Politics
+      li.nav-category-list__item
+        a.link(data-category='subject:Humor') Humor
+      li.nav-category-list__item
+        a.link(data-category='subject:Poetry') Poetry
+      li.nav-category-list__item
+        a.link(data-category='subject:Psychology') Psychology
+      li.nav-category-list__item
+        a.link(data-category='subject:Science') Science
+      li.nav-category-list__item
+        a.link(data-category='subject:Technology') Technology
+      li.nav-category-list__item
+        a.link(data-category='subject:Travel') Travel &amp; Maps
+    .card
+  .butt
+    button.btn load more
+script(src='./dist/index.main.js')
