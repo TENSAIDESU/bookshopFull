@@ -2,11 +2,12 @@ let loader = () => {
 const API_Key='AIzaSyDszvaaBOPGUYhjJ5L2m_OvNUPs6U6CH78';
 const GET_COUNT_BOOKS= 6;
 let currentStep = 0;
-let currentSubject = document.querySelector('.link').getAttribute('data-category');
+
+let currentSubject = document.querySelector('.link.active').innerText;
 
 
 const useRequestBooks =(subject, start, count) => {
-return fetch (`https://www.googleapis.com/books/v1/volumes?q=subject:${subject}&key=${API_Key}&printType=books&startIndex=${start}&maxResults=${count}&langRestrict=en`)
+return fetch (`https://www.googleapis.com/books/v1/volumes?q=${subject}&key=${API_Key}&printType=books&startIndex=${start}&maxResults=${count}&langRestrict=en`)
 .then((response)=> {
   return response.json();
 })
@@ -22,7 +23,7 @@ const getAndShowBooks = async () => {
   currentStep++
 
   books.forEach((book) =>{
-    let img = book.volumeInfo.imageLinks?.thumbnail ?? './imgslider/place-holder.png';
+    let img = book.volumeInfo.imageLinks?.thumbnail ?? './src/images/imgslider/place-holder.png';
     let authors = book.volumeInfo?.authors ?? 'No authors';
     let title = book.volumeInfo.title;
     let description = book.volumeInfo.description ?? 'no describtion';
@@ -49,11 +50,11 @@ const getAndShowBooks = async () => {
         <div class="card_item__title">${title}</div>
           <div class="rating"> 
         <div class="stars">
-<img src="./imgslider/gray.png" class="gray-star">
-<img src="./imgslider/gray.png" class="gray-star">
-<img src="./imgslider/gray.png" class="gray-star">
-<img src="./imgslider/gray.png" class="gray-star">
-<img src="./imgslider/gray.png" class="gray-star">
+<img src="./src/images/imgslider/gray.png" class="gray-star">
+<img src="./src/images/imgslider/gray.png" class="gray-star">
+<img src="./src/images/imgslider/gray.png" class="gray-star">
+<img src="./src/images/imgslider/gray.png" class="gray-star">
+<img src="./src/images/imgslider/gray.png" class="gray-star">
 </div>
 <div class="card_item-count">${ratingsCount}<span></span></div>
         </div>
@@ -73,47 +74,14 @@ let rating = Math.floor(book.volumeInfo.averageRating);
 let stars = document.querySelectorAll('.gray-star'); 
 
 for (let i = 0; i < rating; i++) {
-  stars[i].src = './imgslider/gold.png';
+  stars[i].src = './src/images/imgslider/gold.png';
 }
   })
 }
 
-const buttons = Array.from(document.querySelectorAll('.buybtn'));
-const container = document.querySelector('.cart-counter');
+    const container = document.querySelector('.cartCounter');
 
-buttons.forEach(button => {
-if (Object.prototype.hasOwnProperty.call(localStorage, button.id)) {
-    button.classList.add("added");
-    button.innerHTML = "IN THE CART";
-}
-
-let bagItems = `<div class="items-number">${Object.keys(localStorage).length}</div>`;
-if (Object.keys(localStorage).length > 0) {
-    container.innerHTML = bagItems;
-}
-let cartCounter = 0;
-button.addEventListener("click", () => {
-    const idName = button.id;
-    if (!button.classList.contains("added")) {
-    button.innerHTML = "IN THE CART";
-    button.classList.add("added");
-    localStorage.setItem(idName, button.id);
-    cartCounter--;
-    } else if (button.classList.contains("added")) {
-    button.innerHTML = "BUY NOW";
-    button.classList.remove("added");
-    localStorage.removeItem(idName, button.id);
-    cartCounter++;
-    }
-    bagItems = `<div class="items-number">${Object.keys(localStorage).length}</div>`;
-    container.innerHTML = bagItems;
-    if (Object.keys(localStorage).length == 0) {
-    container.innerHTML = " ";
-    }
-    document.getElementById('cart-counter').textContent = cartCounter;   
-});
-});
-
+getAndShowBooks();
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('link')) {
     document.querySelector('.link.active')?.classList.remove('active');
@@ -125,7 +93,32 @@ document.addEventListener('click', (event) => {
   if (event.target.classList.contains('btn')){
     getAndShowBooks()
   }
-})
-};
+  
+ 
+  if(event.target.classList.contains('buybtn')){        
+    const button = event.target
+  const idName = button.id;
+    if (!button.classList.contains("added")) {
+    button.innerHTML = "IN THE CART";
+    button.classList.add("added");
+    localStorage.setItem(idName, button.id);
+ 
+    } else if (button.classList.contains("added")) {
+    button.innerHTML = "BUY NOW";
+    button.classList.remove("added");
+    localStorage.removeItem(idName, button.id);
+    }
+    const  bagItems = `<span class="itemsnumber">${Object.keys(localStorage).length}</span>`;
+    container.innerHTML = bagItems;
+    if (Object.keys(localStorage).length == 0) {
+    container.innerHTML = " ";
+    } 
+    if (Object.keys(localStorage).length > 0) {
+      container.innerHTML = bagItems;
+  }
+  
+ }
+})}
+;
 export { loader };
 

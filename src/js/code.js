@@ -1,10 +1,10 @@
 let code = () => {
 let images = [{
-    url:"./imgslider./banner1.png",
+    url:"./src/images/imgslider/banner1.png",
    }, {
-     url: "./imgslider./banner2.png",
+     url: "./src/images/imgslider./banner2.png",
    }, {
-     url: "./imgslider./banner3.png",
+     url: "./src/images/imgslider./banner3.png",
 
    }];
 
