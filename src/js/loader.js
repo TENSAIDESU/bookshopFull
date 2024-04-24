@@ -2,8 +2,9 @@ let loader = () => {
 const API_Key='AIzaSyDszvaaBOPGUYhjJ5L2m_OvNUPs6U6CH78';
 const GET_COUNT_BOOKS= 6;
 let currentStep = 0;
-
 let currentSubject = document.querySelector('.link.active').innerText;
+const container = document.querySelector('.cartCounter');
+const storage = JSON.parse(localStorage.getItem('cart') ?? '[]');
 
 
 const useRequestBooks =(subject, start, count) => {
@@ -63,7 +64,7 @@ const getAndShowBooks = async () => {
         <div class="card_item__price">${price}</div>
         <div class="card_item__priceType">${priceType}</div>
         </div>
-      <button class="buybtn" id="${book.id}">Buy now</button> 
+      <button class="buybtn ${storage.includes(book.id) ? 'added' : ''}" id="${book.id}">${storage.includes(book.id) ? 'IN THE CARD' : 'Buy now'}</button> 
       </div>
     `
     document.querySelector('.card').innerHTML += newBook;
@@ -79,8 +80,16 @@ for (let i = 0; i < rating; i++) {
   })
 }
 
-    const container = document.querySelector('.cartCounter');
-
+  const cartCounterNumber = () => {
+    if (storage.length == 0) {
+      container.innerHTML = " ";
+      } else  {
+    const  bagItems = `<span class="itemsnumber">${storage.length}</span>`;
+      container.innerHTML = bagItems;
+    }
+  }
+  
+cartCounterNumber();
 getAndShowBooks();
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('link')) {
@@ -94,31 +103,24 @@ document.addEventListener('click', (event) => {
     getAndShowBooks()
   }
   
- 
-  if(event.target.classList.contains('buybtn')){        
+  if(event.target.classList.contains('buybtn')){       
     const button = event.target
   const idName = button.id;
     if (!button.classList.contains("added")) {
     button.innerHTML = "IN THE CART";
     button.classList.add("added");
-    localStorage.setItem(idName, button.id);
- 
-    } else if (button.classList.contains("added")) {
+    storage.push(idName)
+    } else  {
     button.innerHTML = "BUY NOW";
     button.classList.remove("added");
-    localStorage.removeItem(idName, button.id);
+    if(storage.includes(idName)){
+  storage.splice(storage.indexOf(idName), 1)
     }
-    const  bagItems = `<span class="itemsnumber">${Object.keys(localStorage).length}</span>`;
-    container.innerHTML = bagItems;
-    if (Object.keys(localStorage).length == 0) {
-    container.innerHTML = " ";
-    } 
-    if (Object.keys(localStorage).length > 0) {
-      container.innerHTML = bagItems;
-  }
-  
+    }
+
+localStorage.setItem('cart', JSON.stringify(storage))
+cartCounterNumber();
  }
 })}
-;
-export { loader };
+export { loader }
 
